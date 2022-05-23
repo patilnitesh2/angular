@@ -1,0 +1,68 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<div style ="text-align: Center">
+  <h1>Advertisement</h1>
+</div>
+<nav>
+  <a routerlink="/Advertisementform" routerLinkActive="active">Advertisement Form</a>
+  <a routerlink="/AdvertisementTable" routerLinkActive="active">Advertisement Table</a>
+</nav>
+  <div class="container-fluid">
+    <h1>Advertisement Form</h1>
+    </div>
+    <form #userForm="ngForm">
+      {{userForm.value|json}}
+      <hr/>
+      {{userModel|json}}
+
+        <div class="form-group">
+            <label>Title</label>
+            <input type="Title" required #title="ngModel"[class.is-invalid]="title.invalid && title.touched"class="form-control" name="title" [(ngModel)]="UserModel.title">
+        <small>title is required</small>
+         </div>
+
+        <div class="form-group">
+            <label>Name</label>
+            <input type="name" required #UserName="ngModel"[class.is-invalid]="name.invalid && name.touched"class="form-control" name="UserName"class="form-control" name="UserName"[(ngModel)]="UserModel.Name">
+            <small[class.d-none]="name.valid||name.untouched">Name is required</small>
+          </div>
+
+        <div class="form-group">
+            <label>Category</label>
+            <select (blur)="validateTopic(topic.value)"(change)=""required #topic="ngModel"[class.is-invalid]="topic.invalid && topic.touched"class="custom-select" name="topic"[(ngModel)]="UserModel.category">
+             <option selected>I want to select category</option>
+             <option *ngFor="let topic of topics">{{topic}}</option>
+            </select>  
+            <small class="text-danger"[class.d-none]="topic.valid||topic.untouched">Please choose a topic</small>
+            </div>  
+
+            <div class="form-group">
+              <label>Description</label>
+              <input type="Description" class="form-control"name="Description"[(ngModel)]="UserModel.Description">
+          </div>
+    </form>
+
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Name</th>
+          <th scope="col">category</th>
+          <th scope="col">Description</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="">
+          <td>{{data.Title}}</td>
+          <td>{{data.Name}}</td>
+          <td>{{data.Category}}</td>
+          <td>{{data.Description}}</td>
+<router-outlet></router-outlet>
